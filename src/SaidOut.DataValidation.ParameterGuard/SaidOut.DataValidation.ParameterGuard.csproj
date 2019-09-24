@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <Authors>Said Outgajjouft</Authors>
     <Description>Parameter guard extensions for .NET that checks that a parameter meets the requirements and throws an ArgumentException if it doesn't.</Description>
     <Copyright>© 2017 Said Outgajjouft</Copyright>
@@ -17,9 +17,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <TargetFrameworks>netstandard2.0;netstandard1.6;net47;net462;net461;net46;net452;net451;net45</TargetFrameworks>
-    <TargetFrameworks>netstandard2.0;netstandard1.6;net472;net471;net47;net462;net461;net46;net452;net451;net45</TargetFrameworks>
-
+    <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.6;net48;net472;net471;net47;net462;net461;net46;net452;net451;net45</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
