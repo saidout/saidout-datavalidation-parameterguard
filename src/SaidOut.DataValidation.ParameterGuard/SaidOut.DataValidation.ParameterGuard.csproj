@@ -12,8 +12,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>parameter guard;data validation</PackageTags>
 
-    <VersionPrefix>1.0.1</VersionPrefix>
-    <PackageReleaseNotes> Added support for net472 and net471.</PackageReleaseNotes>
+    <VersionPrefix>1.0.2</VersionPrefix>
+    <PackageReleaseNotes>Added support for netstandard2.1 and net48.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
