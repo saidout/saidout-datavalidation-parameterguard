@@ -58,12 +58,12 @@
         public const string ParamIsNotHexString_ParamName_Value = "{0} does not contain a valid hex string it's value was '{1}'.";
 
         /// <summary>{0} hex string value {1} contains {2} bytes which is not inside valid range of [{3}, {4}].</summary>
-        public const string ParamHexStringBytesIsNotInsideValidRange_ParamName_Value_BytesInValue_MinBytes_MaxBytes = "{0} hex string value {1} contains {2} bytes which is not inside valid range of [{3}, {4}].";
+        public const string ParamHexStringBytesIsNotInsideValidRange_ParamName_Value_BytesInValue_MinBytes_MaxBytes = "{0} hex string value '{1}' contains {2} bytes which is not inside valid range of [{3}, {4}].";
 
         /// <summary>{0} hex string value {1} contains {2} bytes which is less than min byte size requirement of {3}.</summary>
-        public const string ParamHexStringBytesIsLessThanMinByteSize_ParamName_Value_BytesInValue_MinBytes = "{0} hex string value {1} contains {2} bytes which is less than min byte size requirement of {3}.";
+        public const string ParamHexStringBytesIsLessThanMinByteSize_ParamName_Value_BytesInValue_MinBytes = "{0} hex string value '{1}' contains {2} bytes which is less than min byte size requirement of {3}.";
 
         /// <summary>{0} hex string value {1} contains {2} bytes which is greater than max byte size requirement of {3}.</summary>
-        public const string ParamHexStringBytesIsGreaterThanMaxByteSize_ParamName_Value_BytesInValue_MaxBytes = "{0} hex string value {1} contains {2} bytes which is greater than max byte size requirement of {3}.";
+        public const string ParamHexStringBytesIsGreaterThanMaxByteSize_ParamName_Value_BytesInValue_MaxBytes = "{0} hex string value '{1}' contains {2} bytes which is greater than max byte size requirement of {3}.";
     }
 }

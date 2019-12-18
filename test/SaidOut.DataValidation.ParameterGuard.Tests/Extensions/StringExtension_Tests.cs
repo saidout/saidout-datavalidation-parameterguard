@@ -100,7 +100,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         }
 
 
-        [TestCase("", 1, "paramA", "<EMPTY>")]
+        [TestCase("", 1, "paramA", "''")]
         [TestCase("0x", 1, "paramB", "0x")]
         [TestCase("01", 2, "paramC", "01")]
         [TestCase("0x01", 2, "paramD", "0x01")]
@@ -128,7 +128,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         }
 
 
-        [TestCase("", 1, 2, "paramA", "<EMPTY>")]
+        [TestCase("", 1, 2, "paramA", "''")]
         [TestCase("0x", 1, 2, "paramB", "0x")]
         [TestCase("010203", 1, 2, "paramA", "010203")]
         [TestCase("0x010203", 1, 2, "paramB", "0x010203")]

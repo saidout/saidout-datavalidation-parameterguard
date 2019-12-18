@@ -59,27 +59,19 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
                 : paramValue;
 
             if (valueToCheck.Length % 2 != 0 || !Regex.IsMatch(valueToCheck, validHexStringRegex))
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamIsNotHexString_ParamName_Value, paramName, HexValueToExString(paramValue)), paramName);
+                throw new ArgumentException(string.Format(ExceptionMessages.ParamIsNotHexString_ParamName_Value, paramName, paramValue.TruncateParamValue()), paramName);
 
             var bytesInValue = valueToCheck.Length / 2;
-
             if (bytesInValue < minByteSize && maxByteSize == int.MaxValue)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamHexStringBytesIsLessThanMinByteSize_ParamName_Value_BytesInValue_MinBytes, paramName, HexValueToExString(paramValue), bytesInValue, minByteSize), paramName);
+                throw new ArgumentException(string.Format(ExceptionMessages.ParamHexStringBytesIsLessThanMinByteSize_ParamName_Value_BytesInValue_MinBytes, paramName, paramValue.TruncateParamValue(), bytesInValue, minByteSize), paramName);
 
             if (bytesInValue > maxByteSize && minByteSize == 0)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamHexStringBytesIsGreaterThanMaxByteSize_ParamName_Value_BytesInValue_MaxBytes, paramName, HexValueToExString(paramValue), bytesInValue, maxByteSize), paramName);
+                throw new ArgumentException(string.Format(ExceptionMessages.ParamHexStringBytesIsGreaterThanMaxByteSize_ParamName_Value_BytesInValue_MaxBytes, paramName, paramValue.TruncateParamValue(), bytesInValue, maxByteSize), paramName);
 
             if (bytesInValue < minByteSize || bytesInValue > maxByteSize)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamHexStringBytesIsNotInsideValidRange_ParamName_Value_BytesInValue_MinBytes_MaxBytes, paramName, HexValueToExString(paramValue), bytesInValue, minByteSize, maxByteSize), paramName);
+                throw new ArgumentException(string.Format(ExceptionMessages.ParamHexStringBytesIsNotInsideValidRange_ParamName_Value_BytesInValue_MinBytes_MaxBytes, paramName, paramValue.TruncateParamValue(), bytesInValue, minByteSize, maxByteSize), paramName);
 
             return paramValue;
-        }
-
-
-        private static string HexValueToExString(string val)
-        {
-            if (string.IsNullOrEmpty(val)) return "<EMPTY>";
-            return val.TruncateParamValue();
         }
     }
 }
