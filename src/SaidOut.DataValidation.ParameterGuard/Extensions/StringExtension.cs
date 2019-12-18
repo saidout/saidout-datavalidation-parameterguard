@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 namespace SaidOut.DataValidation.ParameterGuard.Extensions
 {
 
+    /// <summary>Contain guard extensions for <see cref="string"/>.</summary>
     public static class StringExtension
     {
 
@@ -26,7 +27,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="paramValue">The value that should be checked.</param>
         /// <param name="regexPattern">The regex pattern that <paramref name="paramValue"/> should match.</param>
         /// <param name="paramName">The name of the parameter that should be checked, i.e. the parameter name of <paramref name="paramValue"/>.</param>
-        /// <returns>Return <param name="paramValue"/></returns>
+        /// <returns>Return <paramref name="paramValue"/>.</returns>
         /// <exception cref="ArgumentNullException">If <paramref name="paramValue"/> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> does not match the <paramref name="regexPattern"/>.</exception>
         public static string CheckMatchRegexPattern(this string paramValue, string regexPattern, string paramName)
@@ -44,7 +45,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="paramName">The name of the parameter that should be checked, i.e. the parameter name of <paramref name="paramValue"/>.</param>
         /// <param name="minByteSize">Minimum number of bytes the hex string should represent.</param>
         /// <param name="maxByteSize">Maximum number of bytes the hex string should represent.</param>
-        /// <returns>Return <param name="paramValue"/></returns>
+        /// <returns>Return <paramref name="paramValue"/></returns>
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> does not contain a hex string or if the number of bytes the hex string represent is not inside the range of [<paramref name="minByteSize"/>, <paramref name="maxByteSize"/>].</exception>
         public static string CheckIsHexString(this string paramValue, string paramName, int minByteSize = 0, int maxByteSize = int.MaxValue)
         {

@@ -3,6 +3,7 @@
 namespace SaidOut.DataValidation.ParameterGuard
 {
 
+    /// <summary>Contain guard methods that compare two values to each other.</summary>
     public static class GuardHelper
     {
 

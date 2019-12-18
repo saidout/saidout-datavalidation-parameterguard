@@ -3,6 +3,7 @@
 namespace SaidOut.DataValidation.ParameterGuard.Extensions
 {
 
+    /// <summary>Contain guard extensions that check that a value is between a lower and upper bound.</summary>
     public static class ComparableExtension
     {
 
@@ -12,8 +13,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="lowerBound">The lower bound of the range, i.e. the <paramref name="paramValue"/> should be equal or greater than this value.</param>
         /// <param name="upperBound">The upper bound of the range, i.e. the <paramref name="paramValue"/> should be equal or less than this value.</param>
         /// <param name="paramName">The name of the parameter that should be checked, i.e. the parameter name of <paramref name="paramValue"/>.</param>
-        /// <returns>Return <param name="paramValue"/></returns>
-        /// <exception cref="ArgumentException">If <param name="lowerBound"/> is greater than <param name="upperBound"/>.</exception>
+        /// <returns>Return <paramref name="paramValue"/>.</returns>
+        /// <exception cref="ArgumentException">If <paramref name="lowerBound"/> is greater than <paramref name="upperBound"/>.</exception>
         /// <exception cref="ArgumentOutOfRangeException">
         /// If <paramref name="paramValue"/> is less than <paramref name="lowerBound"/> or if <paramref name="paramValue"/> is greater than <paramref name="upperBound"/>.
         /// </exception>
@@ -34,7 +35,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="paramValue">The value that should be checked.</param>
         /// <param name="lowerBound">The lower bound, i.e. the value that <paramref name="paramValue"/> should be greater than.</param>
         /// <param name="paramName">The name of the parameter that should be checked, i.e. the parameter name of <paramref name="paramValue"/>.</param>
-        /// <returns>Return <param name="paramValue"/></returns>
+        /// <returns>Return <paramref name="paramValue"/>.</returns>
         /// <exception cref="ArgumentOutOfRangeException">If <paramref name="paramValue"/> is equal or less than <paramref name="lowerBound"/>.</exception>
         public static T CheckIsGreaterThan<T>(this T paramValue, T lowerBound, string paramName)
             where T : struct, IComparable<T>
@@ -51,7 +52,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="paramValue">The value that should be checked.</param>
         /// <param name="lowerBound">The lower bound, i.e. the value that <paramref name="paramValue"/> should be equal or greater than.</param>
         /// <param name="paramName">The name of the parameter that should be checked, i.e. the parameter name of <paramref name="paramValue"/>.</param>
-        /// <returns>Return <param name="paramValue"/></returns>
+        /// <returns>Return <paramref name="paramValue"/>.</returns>
         /// <exception cref="ArgumentOutOfRangeException">If <paramref name="paramValue"/> is less than <paramref name="lowerBound"/>.</exception>
         /// <returns></returns>
         public static T CheckIsEqualOrGreaterThan<T>(this T paramValue, T lowerBound, string paramName)
@@ -69,7 +70,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="paramValue">The value that should be checked.</param>
         /// <param name="upperBound">The upper bound, i.e. the value that <paramref name="paramValue"/> should be less than.</param>
         /// <param name="paramName">The name of the parameter that should be checked, i.e. the parameter name of <paramref name="paramValue"/>.</param>
-        /// <returns>Return <param name="paramValue"/></returns>
+        /// <returns>Return <paramref name="paramValue."/></returns>
         /// <exception cref="ArgumentOutOfRangeException">If <paramref name="paramValue"/> is equal or greater than <paramref name="upperBound"/>.</exception>
         public static T CheckIsLessThan<T>(this T paramValue, T upperBound, string paramName)
             where T : struct, IComparable<T>
@@ -86,7 +87,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="paramValue">The value that should be checked.</param>
         /// <param name="upperBound">The upper bound, i.e. the value that <paramref name="paramValue"/> should be equal or less than.</param>
         /// <param name="paramName">The name of the parameter that should be checked, i.e. the parameter name of <paramref name="paramValue"/>.</param>
-        /// <returns>Return <param name="paramValue"/></returns>
+        /// <returns>Return <paramref name="paramValue"/></returns>
         /// <exception cref="ArgumentOutOfRangeException">If <paramref name="paramValue"/> is greater than <paramref name="upperBound"/>.</exception>
         public static T CheckIsEqualOrLessThan<T>(this T paramValue, T upperBound, string paramName)
             where T : struct, IComparable<T>
