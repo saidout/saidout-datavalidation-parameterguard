@@ -19,7 +19,7 @@ namespace SaidOut.DataValidation.ParameterGuard
         }
 
 
-        public static string ToDelimitatedString<T>(this IEnumerable<T> values)
+        public static string ToDelimitedString<T>(this IEnumerable<T> values)
         {
             var sb = new StringBuilder();
             using (var enumerator = values.GetEnumerator())

@@ -39,7 +39,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
                     paramName,
                     paramValue,
                     enumType.FullName,
-                    Enum.GetValues(enumType).OfType<TEnum>().ToDelimitatedString()), paramName);
+                    Enum.GetValues(enumType).OfType<TEnum>().ToDelimitedString()), paramName);
 
             return paramValue;
         }
@@ -55,7 +55,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         public static T CheckIsInWhitelist<T>(this T paramValue, ICollection<T> whitelist, string paramName)
         {
             if (!whitelist.Contains(paramValue))
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamValueNotValid_ParamName_Value_ValidValues, paramName, paramValue?.ToString().TruncateParamValue(), whitelist.ToDelimitatedString()), paramName);
+                throw new ArgumentException(string.Format(ExceptionMessages.ParamValueNotValid_ParamName_Value_ValidValues, paramName, paramValue?.ToString().TruncateParamValue(), whitelist.ToDelimitedString()), paramName);
 
             return paramValue;
         }
