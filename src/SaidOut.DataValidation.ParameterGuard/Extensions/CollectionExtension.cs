@@ -18,9 +18,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> is empty, i.e. does not contain any items.</exception>
         public static IEnumerable<T> CheckIsNotNullOrEmpty<T>(this IEnumerable<T> paramValue, string paramName)
         {
-            if (paramValue == null) throw new ArgumentNullException(paramName, string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName));
-            if (!paramValue.Any())
-                throw new ArgumentException(string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName), paramName);
+            if (paramValue == null) throw new ArgumentNullException(paramName, ExceptionMessages.CollectionCannotBeNullOrEmpty(paramName));
+            if (!paramValue.Any()) throw new ArgumentException(ExceptionMessages.CollectionCannotBeNullOrEmpty(paramName), paramName);
 
             return paramValue;
         }
@@ -35,9 +34,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> is empty, i.e. does not contain any items.</exception>
         public static ICollection<T> CheckIsNotNullOrEmpty<T>(this ICollection<T> paramValue, string paramName)
         {
-            if (paramValue == null) throw new ArgumentNullException(paramName, string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName));
-            if (paramValue.Count == 0)
-                throw new ArgumentException(string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName), paramName);
+            if (paramValue == null) throw new ArgumentNullException(paramName, ExceptionMessages.CollectionCannotBeNullOrEmpty(paramName));
+            if (paramValue.Count == 0) throw new ArgumentException(ExceptionMessages.CollectionCannotBeNullOrEmpty(paramName), paramName);
 
             return paramValue;
         }

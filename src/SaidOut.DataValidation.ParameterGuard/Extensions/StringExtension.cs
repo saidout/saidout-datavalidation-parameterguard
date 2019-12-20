@@ -16,8 +16,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         public static string CheckIsNotNullOrBlank(this string paramValue, string paramName)
         {
             if (paramValue == null) throw new ArgumentNullException(paramName);
-            if (string.IsNullOrWhiteSpace(paramValue))
-                throw new ArgumentException(string.Format(ExceptionMessages.StringParamCannotBeBlank_ParamName, paramName), paramName);
+            if (string.IsNullOrWhiteSpace(paramValue)) throw new ArgumentException(
+                ExceptionMessages.StringParamCannotBeBlank(paramName), paramName);
 
             return paramValue;
         }
@@ -33,8 +33,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         public static string CheckMatchRegexPattern(this string paramValue, string regexPattern, string paramName)
         {
             if (paramValue == null) throw new ArgumentNullException(paramName);
-            if (!Regex.IsMatch(paramValue, regexPattern))
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamDoesNotMatchRegExPattern_ParamName_RegexPattern_Value, paramName, regexPattern, paramValue.TruncateParamValue()), paramName);
+            if (!Regex.IsMatch(paramValue, regexPattern)) throw new ArgumentException(
+                ExceptionMessages.ParamDoesNotMatchRegexPattern(paramValue, regexPattern, paramName), paramName);
 
             return paramValue;
         }
@@ -59,19 +59,17 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
                 : paramValue;
 
             if (valueToCheck.Length % 2 != 0 || !Regex.IsMatch(valueToCheck, validHexStringRegex))
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamIsNotHexString_ParamName_Value, paramName, paramValue.TruncateParamValue()), paramName);
+                throw new ArgumentException(ExceptionMessages.ParamIsNotHexString(paramValue, paramName), paramName);
 
             var bytesInValue = valueToCheck.Length / 2;
-            if (bytesInValue < minByteSize && maxByteSize == int.MaxValue)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamHexStringBytesIsLessThanMinByteSize_ParamName_Value_BytesInValue_MinBytes, paramName, paramValue.TruncateParamValue(), bytesInValue, minByteSize), paramName);
+            if (bytesInValue >= minByteSize && bytesInValue <= maxByteSize) return paramValue;
+            
+            if (maxByteSize == int.MaxValue)
+                throw new ArgumentException(ExceptionMessages.ParamHexStringBytesIsLessThanMinByteSize(paramValue, bytesInValue, paramName, minByteSize), paramName);
+            if (minByteSize == 0)
+                throw new ArgumentException(ExceptionMessages.ParamHexStringBytesIsGreaterThanMaxByteSize(paramValue, bytesInValue, paramName, maxByteSize), paramName);
 
-            if (bytesInValue > maxByteSize && minByteSize == 0)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamHexStringBytesIsGreaterThanMaxByteSize_ParamName_Value_BytesInValue_MaxBytes, paramName, paramValue.TruncateParamValue(), bytesInValue, maxByteSize), paramName);
-
-            if (bytesInValue < minByteSize || bytesInValue > maxByteSize)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamHexStringBytesIsNotInsideValidRange_ParamName_Value_BytesInValue_MinBytes_MaxBytes, paramName, paramValue.TruncateParamValue(), bytesInValue, minByteSize, maxByteSize), paramName);
-
-            return paramValue;
+            throw new ArgumentException(ExceptionMessages.ParamHexStringBytesIsNotInsideValidRange(paramValue, bytesInValue, paramName, minByteSize, maxByteSize), paramName);
         }
     }
 }

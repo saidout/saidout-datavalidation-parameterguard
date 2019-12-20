@@ -35,12 +35,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
             where TEnum : struct, IComparable, IFormattable, IConvertible
         {
             var enumType = typeof(TEnum);
-            if (!Enum.IsDefined(enumType, paramValue))
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamEnumNotDefined_ParamName_Value_EnumType_DefinedEnumValues,
-                    paramName,
-                    paramValue,
-                    enumType.FullName,
-                    Enum.GetValues(enumType).OfType<TEnum>().ToDelimitedString()), paramName);
+            if (!Enum.IsDefined(enumType, paramValue)) throw new ArgumentException(
+                ExceptionMessages.ParamEnumNotDefined(paramValue, paramName), paramName);
 
             return paramValue;
         }
@@ -55,8 +51,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> is not in the <paramref name="whitelist"/>.</exception>
         public static T CheckIsInWhitelist<T>(this T paramValue, ICollection<T> whitelist, string paramName)
         {
-            if (!whitelist.Contains(paramValue))
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamValueNotValid_ParamName_Value_ValidValues, paramName, paramValue?.ToString().TruncateParamValue(), whitelist.ToDelimitedString()), paramName);
+            if (!whitelist.Contains(paramValue)) throw new ArgumentException(
+                ExceptionMessages.ParamValueNotInWhitelist(paramValue, whitelist, paramName), paramName);
 
             return paramValue;
         }

@@ -1,69 +1,91 @@
-﻿namespace SaidOut.DataValidation.ParameterGuard
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SaidOut.DataValidation.ParameterGuard
 {
 
     internal static class ExceptionMessages
     {
 
-        /// <summary>{0} can't be less than {1}. Value of {0} was '{2}' and value of {1} was '{3}'.</summary>
-        public const string ParamXCannotBeLessThanParamY_ParamXName_ParamYName_ParamX_ParamY = "{0} can't be less than {1}. Value of {0} was '{2}' and value of {1} was '{3}'.";
+        /// <summary>{paramXName} can't be less than {paramYName}. Value of {paramXName} was '{paramX}' and value of {paramYName} was '{paramY}'.</summary>
+        public static string ParamXCannotBeLessThanParamY<T>(T paramX, string paramXName, T paramY, string paramYName) where T : struct, IComparable<T> =>
+            $"{paramXName} can't be less than {paramYName}. Value of {paramXName} was '{paramX}' and value of {paramYName} was '{paramY}'.";
 
-        /// <summary>{0} can't be equal or less than {1}. Value of {0} was '{2}' and value of {1} was '{3}'.</summary>
-        public const string ParamXCannotBeEqualOrLessThanParamY_ParamXName_ParamYName_ParamX_ParamY = "{0} can't be equal or less than {1}. Value of {0} was '{2}' and value of {1} was '{3}'.";
+        /// <summary>{paramXName} can't be equal or less than {paramYName}. Value of {paramXName} was '{paramX}' and value of {paramYName} was '{paramY}'.</summary>
+        public static string ParamXCannotBeEqualOrLessThanParamY<T>(T paramX, string paramXName, T paramY, string paramYName) where T : struct, IComparable<T> =>
+            $"{paramXName} can't be equal or less than {paramYName}. Value of {paramXName} was '{paramX}' and value of {paramYName} was '{paramY}'.";
 
-        /// <summary>{0} can't be greater than {1}. Value of {0} was '{2}' and value of {1} was '{3}'.</summary>
-        public const string ParamXCannotBeGreaterThanParamY_ParamXName_ParamYName_ParamX_ParamY = "{0} can't be greater than {1}. Value of {0} was '{2}' and value of {1} was '{3}'.";
+        /// <summary>{paramXName} can't be greater than {paramYName}. Value of {paramXName} was '{paramX}' and value of {paramYName} was '{paramY}'.</summary>
+        public static string ParamXCannotBeGreaterThanParamY<T>(T paramX, string paramXName, T paramY, string paramYName) where T : struct, IComparable<T> =>
+            $"{paramXName} can't be greater than {paramYName}. Value of {paramXName} was '{paramX}' and value of {paramYName} was '{paramY}'.";
 
-        /// <summary>{0} can't be equal or greater than {1}. Value of {0} was '{2}' and value of {1} was '{3}'.</summary>
-        public const string ParamXCannotBeEqualOrGreaterThanParamY_ParamXName_ParamYName_ParamX_ParamY = "{0} can't be equal or greater than {1}. Value of {0} was '{2}' and value of {1} was '{3}'.";
-
-
-
-        /// <summary>Collection {0} can't be empty.</summary>
-        public const string CollectionCannotBeNullOrEmpty_ParamName = "Collection {0} can't be null or empty.";
-
+        /// <summary>{paramXName} can't be equal or greater than {paramYName}. Value of {paramXName} was '{paramX}' and value of {paramYName} was '{paramY}'.</summary>
+        public static string ParamXCannotBeEqualOrGreaterThanParamY<T>(T paramX, string paramXName, T paramY, string paramYName) where T : struct, IComparable<T> =>
+            $"{paramXName} can't be equal or greater than {paramYName}. Value of {paramXName} was '{paramX}' and value of {paramYName} was '{paramY}'.";
 
 
-        /// <summary>{0} should be inside range [{1}, {2}] but it's value was '{3}'.</summary>
-        public const string ParamShouldBeInsideRange_ParamName_LowerBound_UpperBound_Value = "{0} should be inside range [{1}, {2}] but it's value was '{3}'.";
 
-        /// <summary>"{0} should be greater than {1} but it's value was '{2}'.</summary>
-        public const string ParamShouldBeGreaterThan_ParamName_LowerBound_Value = "{0} should be greater than {1} but it's value was '{2}'.";
+        /// <summary>Collection {paramName} can't be null or empty.</summary>
+        public static string CollectionCannotBeNullOrEmpty(string paramName) => $"Collection {paramName} can't be null or empty.";
 
-        /// <summary>{0} should be equal or greater than {1} but it's value was '{2}'.</summary>
-        public const string ParamShouldBeEqualOrGreaterThan_ParamName_LowerBound_Value = "{0} should be equal or greater than {1} but it's value was '{2}'.";
 
-        /// <summary>{0} should be less than {1} but it's value was '{2}'.</summary>
-        public const string ParamShouldBeLessThan_ParamName_UpperBound_Value = "{0} should be less than {1} but it's value was '{2}'.";
+
+        /// <summary>{paramName} should be inside range [{lowerBound}, {upperBound}] but it's value was '{paramValue}'.</summary>
+        public static string ParamShouldBeInsideRange<T>(T paramValue, T lowerBound, T upperBound, string paramName) where T : struct, IComparable<T> =>
+            $"{paramName} should be inside range [{lowerBound}, {upperBound}] but it's value was '{paramValue}'.";
+
+        /// <summary>{paramName} should be greater than {lowerBound} but it's value was '{paramValue}'.</summary>
+        public static string ParamShouldBeGreaterThan<T>(T paramValue, T lowerBound, string paramName) where T : struct, IComparable<T> =>
+            $"{paramName} should be greater than {lowerBound} but it's value was '{paramValue}'.";
+
+        /// <summary>{paramName} should be equal or greater than {lowerBound} but it's value was '{paramValue}'.</summary>
+        public static string ParamShouldBeEqualOrGreaterThan<T>(T paramValue, T lowerBound, string paramName) where T : struct, IComparable<T> =>
+            $"{paramName} should be equal or greater than {lowerBound} but it's value was '{paramValue}'.";
+
+        /// <summary>{paramName} should be less than {upperBound} but it's value was '{paramValue}'.</summary>
+        public static string ParamShouldBeLessThan<T>(T paramValue, T upperBound, string paramName) where T : struct, IComparable<T> =>
+            $"{paramName} should be less than {upperBound} but it's value was '{paramValue}'.";
 
         /// <summary>{0} should be equal or less than {1} but it's value was '{2}'.</summary>
-        public const string ParamShouldBeEqualOrLessThan_ParamName_UpperBound_Value = "{0} should be equal or less than {1} but it's value was '{2}'.";
+        public static string ParamShouldBeEqualOrLessThan<T>(T paramValue, T upperBound, string paramName) where T : struct, IComparable<T> =>
+            $"{paramName} should be equal or less than {upperBound} but it's value was '{paramValue}'.";
 
 
 
-        /// <summary>{0} value '{1}' is not a deifned enum value of type {2}. Defined values are: {3}</summary>
-        public const string ParamEnumNotDefined_ParamName_Value_EnumType_DefinedEnumValues = "{0} value '{1}' is not a deifned enum value of type {2}. Defined values are: {3}";
+        /// <summary>"{paramName} value '{paramValue}' is not a defined enum value of type |EnumFullname|. Defined values are: |DefinedEnumValues|</summary>
+        public static string ParamEnumNotDefined<TEnum>(TEnum paramValue, string paramName) where TEnum : struct, IComparable, IFormattable, IConvertible =>
+            $"{paramName} value '{paramValue}' is not a defined enum value of type {typeof(TEnum).FullName}. Defined values are: {Enum.GetValues(typeof(TEnum)).OfType<TEnum>().ToDelimitedString()}";
 
-        /// <summary>{0} value of '{1}' is not a valid value. Valid values are: {2}.</summary>
-        public const string ParamValueNotValid_ParamName_Value_ValidValues = "{0} value of '{1}' is not a valid value. Valid values are: {2}.";
-
-        /// <summary>{0} parameter can't be blank string.</summary>
-        public const string StringParamCannotBeBlank_ParamName = "{0} can't be blank string.";
-
+        /// <summary>{paramName} value of '{paramValue}' is not a valid value. Valid values are: {whitelist}.</summary>
+        public static string ParamValueNotInWhitelist<T>(T paramValue, ICollection<T> whitelist, string paramName) =>
+            $"{paramName} value of '{paramValue?.ToString().TruncateParamValue()}' is not a valid value. Valid values are: {whitelist.ToDelimitedString()}.";
 
 
-        /// <summary>{0} does not match regex pattern {1} its value was {2}.</summary>
-        public const string ParamDoesNotMatchRegExPattern_ParamName_RegexPattern_Value = "{0} does not match regex pattern {1} it's value was '{2}'.";
 
-        /// <summary>{0} does not contain a valid hex string it's value was '{1}'.</summary>
-        public const string ParamIsNotHexString_ParamName_Value = "{0} does not contain a valid hex string it's value was '{1}'.";
+        /// <summary>{paramName} can't be blank string.</summary>
+        public static string StringParamCannotBeBlank(string paramName) => $"{paramName} can't be blank string.";
 
-        /// <summary>{0} hex string value {1} contains {2} bytes which is not inside valid range of [{3}, {4}].</summary>
-        public const string ParamHexStringBytesIsNotInsideValidRange_ParamName_Value_BytesInValue_MinBytes_MaxBytes = "{0} hex string value '{1}' contains {2} bytes which is not inside valid range of [{3}, {4}].";
+        /// <summary>{paramName} does not match regex pattern {regexPattern} it's value was '{paramValue}'.</summary>
+        public static string ParamDoesNotMatchRegexPattern(string paramValue, string regexPattern, string paramName) =>
+            $"{paramName} does not match regex pattern {regexPattern} it's value was '{paramValue?.TruncateParamValue()}'.";
 
-        /// <summary>{0} hex string value {1} contains {2} bytes which is less than min byte size requirement of {3}.</summary>
-        public const string ParamHexStringBytesIsLessThanMinByteSize_ParamName_Value_BytesInValue_MinBytes = "{0} hex string value '{1}' contains {2} bytes which is less than min byte size requirement of {3}.";
+        //string paramValue, string paramName, int minByteSize = 0, int maxByteSize = int.MaxValue
 
-        /// <summary>{0} hex string value {1} contains {2} bytes which is greater than max byte size requirement of {3}.</summary>
-        public const string ParamHexStringBytesIsGreaterThanMaxByteSize_ParamName_Value_BytesInValue_MaxBytes = "{0} hex string value '{1}' contains {2} bytes which is greater than max byte size requirement of {3}.";
+        /// <summary>{paramName} does not contain a valid hex string it's value was '{paramValue}'.</summary>
+        public static string ParamIsNotHexString(string paramValue, string paramName) =>
+            $"{paramName} does not contain a valid hex string it's value was '{paramValue?.TruncateParamValue()}'.";
+
+        /// <summary>{paramName} hex string value '{paramValue}' contains {bytesInValue} bytes which is not inside valid range of [{minByteSize}, {maxByteSize}].</summary>
+        public static string ParamHexStringBytesIsNotInsideValidRange(string paramValue, int bytesInValue, string paramName, int minByteSize, int maxByteSize) =>
+            $"{paramName} hex string value '{paramValue?.TruncateParamValue()}' contains {bytesInValue} bytes which is not inside valid range of [{minByteSize}, {maxByteSize}].";
+
+        /// <summary>{paramName} hex string value '{paramValue.TruncateParamValue()}' contains {bytesInValue} bytes which is less than min byte size requirement of {minByteSize}.</summary>
+        public static string ParamHexStringBytesIsLessThanMinByteSize(string paramValue, int bytesInValue, string paramName, int minByteSize) =>
+            $"{paramName} hex string value '{paramValue?.TruncateParamValue()}' contains {bytesInValue} bytes which is less than min byte size requirement of {minByteSize}.";
+
+        /// <summary>{paramName} hex string value '{paramValue}' contains {bytesInValue} bytes which is greater than max byte size requirement of {maxByteSize}.</summary>
+        public static string ParamHexStringBytesIsGreaterThanMaxByteSize(string paramValue, int bytesInValue, string paramName, int maxByteSize) =>
+            $"{paramName} hex string value '{paramValue?.TruncateParamValue()}' contains {bytesInValue} bytes which is greater than max byte size requirement of {maxByteSize}.";
     }
 }

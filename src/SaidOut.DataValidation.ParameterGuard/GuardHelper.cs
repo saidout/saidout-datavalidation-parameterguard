@@ -17,9 +17,8 @@ namespace SaidOut.DataValidation.ParameterGuard
         public static void ThrowIfParamXIsLessThanParamY<T>(T paramX, string paramXName, T paramY, string paramYName)
             where T : struct, IComparable<T>
         {
-            if (paramX.CompareTo(paramY) < 0)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamXCannotBeLessThanParamY_ParamXName_ParamYName_ParamX_ParamY,
-                    paramXName, paramYName, paramX, paramY), paramXName);
+            if (paramX.CompareTo(paramY) < 0) throw new ArgumentException(
+                ExceptionMessages.ParamXCannotBeLessThanParamY(paramX, paramXName, paramY, paramYName), paramXName);
         }
 
 
@@ -33,9 +32,8 @@ namespace SaidOut.DataValidation.ParameterGuard
         public static void ThrowIfParamXIsEqualOrLessThanParamY<T>(T paramX, string paramXName, T paramY, string paramYName)
             where T : struct, IComparable<T>
         {
-            if (paramX.CompareTo(paramY) <= 0)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamXCannotBeEqualOrLessThanParamY_ParamXName_ParamYName_ParamX_ParamY,
-                    paramXName, paramYName, paramX, paramY), paramXName);
+            if (paramX.CompareTo(paramY) <= 0) throw new ArgumentException(
+                ExceptionMessages.ParamXCannotBeEqualOrLessThanParamY(paramX, paramXName, paramY, paramYName), paramXName);
         }
 
 
@@ -49,9 +47,8 @@ namespace SaidOut.DataValidation.ParameterGuard
         public static void ThrowIfParamXIsGreaterThanParamY<T>(T paramX, string paramXName, T paramY, string paramYName)
             where T : struct, IComparable<T>
         {
-            if (paramX.CompareTo(paramY) > 0)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamXCannotBeGreaterThanParamY_ParamXName_ParamYName_ParamX_ParamY,
-                    paramXName, paramYName, paramX, paramY), paramXName);
+            if (paramX.CompareTo(paramY) > 0) throw new ArgumentException(
+                ExceptionMessages.ParamXCannotBeGreaterThanParamY(paramX, paramXName, paramY, paramYName), paramXName);
         }
 
 
@@ -65,9 +62,8 @@ namespace SaidOut.DataValidation.ParameterGuard
         public static void ThrowIfParamXIsEqualOrGreaterThanParamY<T>(T paramX, string paramXName, T paramY, string paramYName)
             where T : struct, IComparable<T>
         {
-            if (paramX.CompareTo(paramY) >= 0)
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamXCannotBeEqualOrGreaterThanParamY_ParamXName_ParamYName_ParamX_ParamY,
-                    paramXName, paramYName, paramX, paramY), paramXName);
+            if (paramX.CompareTo(paramY) >= 0) throw new ArgumentException(
+                ExceptionMessages.ParamXCannotBeEqualOrGreaterThanParamY(paramX, paramXName, paramY, paramYName), paramXName);
         }
     }
 }
