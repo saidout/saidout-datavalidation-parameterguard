@@ -11,6 +11,9 @@
     <RepositoryUrl>https://github.com/saidout/saidout-datavalidation-parameterguard</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>parameter guard;data validation</PackageTags>
+
+    <VersionPrefix>1.0.1</VersionPrefix>
+    <PackageReleaseNotes> Added support for net472 and net471.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
