@@ -15,8 +15,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         [Test]
         public void CheckIsNotNullOrEmpty_IEnumerableIsNull_ThrowsArgumentNullException()
         {
-            var ex = Assert.Throws<ArgumentNullException>(() => ((IEnumerable<string>)null).CheckIsNotNullOrEmpty(TestParamName));
-            Assert.That(ex.ParamName, Is.EqualTo(TestParamName), nameof(ex.ParamName));
+            var ex = Assert.Throws<ArgumentNullException>(() => ((IEnumerable<string>?)null).CheckIsNotNullOrEmpty(TestParamName));
+            Assert.That(ex?.ParamName, Is.EqualTo(TestParamName), nameof(ex.ParamName));
         }
 
 
@@ -26,8 +26,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
             IEnumerable<string> collection = new List<string>();
 
             var ex = Assert.Throws<ArgumentException>(() => collection.CheckIsNotNullOrEmpty(TestParamName));
-            Assert.That(ex.ParamName, Is.EqualTo(TestParamName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain("empty"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(TestParamName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain("empty"), nameof(ex.Message));
         }
 
 
@@ -47,8 +47,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         [Test]
         public void CheckIsNotNullOrEmpty_ICollectionIsNull_ThrowsArgumentNullException()
         {
-            var ex = Assert.Throws<ArgumentNullException>(() => ((ICollection<string>)null).CheckIsNotNullOrEmpty(TestParamName));
-            Assert.That(ex.ParamName, Is.EqualTo(TestParamName), nameof(ex.ParamName));
+            var ex = Assert.Throws<ArgumentNullException>(() => ((ICollection<string>?)null).CheckIsNotNullOrEmpty(TestParamName));
+            Assert.That(ex?.ParamName, Is.EqualTo(TestParamName), nameof(ex.ParamName));
         }
 
 
@@ -58,8 +58,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
             ICollection<string> collection = new List<string>();
 
             var ex = Assert.Throws<ArgumentException>(() => collection.CheckIsNotNullOrEmpty(TestParamName));
-            Assert.That(ex.ParamName, Is.EqualTo(TestParamName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain("empty"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(TestParamName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain("empty"), nameof(ex.Message));
         }
 
 

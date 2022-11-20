@@ -16,8 +16,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsInsideRange_ValueIsNotInsideRange_ThrowsArgumentOutOfRangeException(int value, int lowerBound, int upperBound, string paramName)
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => value.CheckIsInsideRange(lowerBound, upperBound, paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain(lowerBound.ToString()).And.Contain(upperBound.ToString()).And.Contain(value.ToString()));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain(lowerBound.ToString()).And.Contain(upperBound.ToString()).And.Contain(value.ToString()));
         }
 
 
@@ -41,8 +41,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsGreaterThan_ValueIsEqualOrLessThanLowerBound_ThrowsArgumentOutOfRangeException(int value, int lowerBound, string paramName)
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => value.CheckIsGreaterThan(lowerBound, paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain(lowerBound.ToString()).And.Contain(value.ToString()));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain(lowerBound.ToString()).And.Contain(value.ToString()));
         }
 
 
@@ -68,8 +68,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsEqualOrGreaterThan_ValueIsLessThanLowerBound_ThrowsArgumentOutOfRangeException(int value, int lowerBound, string paramName)
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => value.CheckIsEqualOrGreaterThan(lowerBound, paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain(lowerBound.ToString()).And.Contain(value.ToString()));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain(lowerBound.ToString()).And.Contain(value.ToString()));
         }
 
 
@@ -97,8 +97,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsLessThan_ValueIsEqualOrGreaterThanUpperBound_ThrowsArgumentOutOfRangeException(int value, int upperBound, string paramName)
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => value.CheckIsLessThan(upperBound, paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain(upperBound.ToString()).And.Contain(value.ToString()));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain(upperBound.ToString()).And.Contain(value.ToString()));
         }
 
 
@@ -124,8 +124,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsEqualOrLessThan_ValueIsGreaterThanUpperBound_ThrowsArgumentOutOfRangeException(int value, int upperBound, string paramName)
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => value.CheckIsEqualOrLessThan(upperBound, paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain(upperBound.ToString()).And.Contain(value.ToString()));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain(upperBound.ToString()).And.Contain(value.ToString()));
         }
 
 

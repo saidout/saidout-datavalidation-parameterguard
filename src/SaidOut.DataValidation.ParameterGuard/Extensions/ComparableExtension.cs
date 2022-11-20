@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SaidOut.DataValidation.ParameterGuard.Extensions
+﻿namespace SaidOut.DataValidation.ParameterGuard.Extensions
 {
 
     public static class ComparableExtension
@@ -21,7 +19,6 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
             where T : struct, IComparable<T>
         {
             GuardHelper.ThrowIfParamXIsGreaterThanParamY(lowerBound, nameof(lowerBound), upperBound, nameof(upperBound));
-
             if (paramValue.CompareTo(lowerBound) < 0 || paramValue.CompareTo(upperBound) > 0)
                 throw new ArgumentOutOfRangeException(paramName, string.Format(ExceptionMessages.ParamShouldBeInsideRange_ParamName_LowerBound_UpperBound_Value, paramName, lowerBound, upperBound, paramValue));
 

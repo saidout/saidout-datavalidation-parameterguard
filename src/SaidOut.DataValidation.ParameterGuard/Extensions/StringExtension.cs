@@ -12,9 +12,9 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="paramName">The name of the parameter that should be checked, i.e. the parameter name of <paramref name="paramValue"/>.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="paramValue"/> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> is a blank string, i.e. is empty or only contains white spaces.</exception>
-        public static string CheckIsNotNullOrBlank(this string paramValue, string paramName)
+        public static string CheckIsNotNullOrBlank(this string? paramValue, string paramName)
         {
-            if (paramValue == null) throw new ArgumentNullException(paramName);
+            if (paramValue is null) throw new ArgumentNullException(paramName);
             if (string.IsNullOrWhiteSpace(paramValue))
                 throw new ArgumentException(string.Format(ExceptionMessages.StringParamCannotBeBlank_ParamName, paramName), paramName);
 
@@ -29,9 +29,9 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <returns>Return <param name="paramValue"/></returns>
         /// <exception cref="ArgumentNullException">If <paramref name="paramValue"/> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> does not match the <paramref name="regexPattern"/>.</exception>
-        public static string CheckMatchRegexPattern(this string paramValue, string regexPattern, string paramName)
+        public static string CheckMatchRegexPattern(this string? paramValue, string regexPattern, string paramName)
         {
-            if (paramValue == null) throw new ArgumentNullException(paramName);
+            if (paramValue is null) throw new ArgumentNullException(paramName);
             if (!Regex.IsMatch(paramValue, regexPattern))
                 throw new ArgumentException(string.Format(ExceptionMessages.ParamDoesNotMatchRegExPattern_ParamName_RegexPattern_Value, paramName, regexPattern, paramValue.TruncateParamValue()), paramName);
 
@@ -46,13 +46,13 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="maxByteSize">Maximum number of bytes the hex string should represent.</param>
         /// <returns>Return <param name="paramValue"/></returns>
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> does not contain a hex string or if the number of bytes the hex string represent is not inside the range of [<paramref name="minByteSize"/>, <paramref name="maxByteSize"/>].</exception>
-        public static string CheckIsHexString(this string paramValue, string paramName, int minByteSize = 0, int maxByteSize = int.MaxValue)
+        public static string CheckIsHexString(this string? paramValue, string paramName, int minByteSize = 0, int maxByteSize = int.MaxValue)
         {
             minByteSize.CheckIsEqualOrGreaterThan(0, nameof(minByteSize));
             GuardHelper.ThrowIfParamXIsGreaterThanParamY(minByteSize, nameof(minByteSize), maxByteSize, nameof(maxByteSize));
             const string validHexStringRegex = "^([0-9a-fA-F][0-9a-fA-F])*$";
 
-            if (paramValue == null) throw new ArgumentNullException(paramName);
+            if (paramValue is null) throw new ArgumentNullException(paramName);
             var valueToCheck = paramValue.StartsWith("0x")
                 ? paramValue.Substring(2)
                 : paramValue;

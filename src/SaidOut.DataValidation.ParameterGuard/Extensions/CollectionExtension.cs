@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace SaidOut.DataValidation.ParameterGuard.Extensions
+﻿namespace SaidOut.DataValidation.ParameterGuard.Extensions
 {
 
     /// <summary>Parameter guards for collections.</summary>
@@ -16,9 +12,9 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <returns>Return <param name="paramValue"/></returns>
         /// <exception cref="ArgumentNullException">If <paramref name="paramValue"/> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> is empty, i.e. does not contain any items.</exception>
-        public static IEnumerable<T> CheckIsNotNullOrEmpty<T>(this IEnumerable<T> paramValue, string paramName)
+        public static IEnumerable<T> CheckIsNotNullOrEmpty<T>(this IEnumerable<T>? paramValue, string paramName)
         {
-            if (paramValue == null) throw new ArgumentNullException(paramName, string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName));
+            if (paramValue is null) throw new ArgumentNullException(paramName, string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName));
             if (!paramValue.Any())
                 throw new ArgumentException(string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName), paramName);
 
@@ -33,9 +29,9 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <returns>Return <param name="paramValue"/></returns>
         /// <exception cref="ArgumentNullException">If <paramref name="paramValue"/> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> is empty, i.e. does not contain any items.</exception>
-        public static ICollection<T> CheckIsNotNullOrEmpty<T>(this ICollection<T> paramValue, string paramName)
+        public static ICollection<T> CheckIsNotNullOrEmpty<T>(this ICollection<T>? paramValue, string paramName)
         {
-            if (paramValue == null) throw new ArgumentNullException(paramName, string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName));
+            if (paramValue is null) throw new ArgumentNullException(paramName, string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName));
             if (paramValue.Count == 0)
                 throw new ArgumentException(string.Format(ExceptionMessages.CollectionCannotBeNullOrEmpty_ParamName, paramName), paramName);
 

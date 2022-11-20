@@ -1,19 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{011C466C-D03A-41C7-B4E2-D236AF27B90D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6399C426-ED74-4F76-B365-4B88F7F780EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaidOut.DataValidation.ParameterGuard", "src\SaidOut.DataValidation.ParameterGuard\SaidOut.DataValidation.ParameterGuard.csproj", "{9421435E-F537-4C91-9023-A4E11229A793}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaidOut.DataValidation.ParameterGuard", "src\SaidOut.DataValidation.ParameterGuard\SaidOut.DataValidation.ParameterGuard.csproj", "{404D0115-53AA-48CD-8687-E4E3BEB2213E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaidOut.DataValidation.ParameterGuard.Tests", "test\SaidOut.DataValidation.ParameterGuard.Tests\SaidOut.DataValidation.ParameterGuard.Tests.csproj", "{4366F679-B28E-45AC-BB05-6EDE3FF074B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaidOut.DataValidation.ParameterGuard.Tests", "test\SaidOut.DataValidation.ParameterGuard.Tests\SaidOut.DataValidation.ParameterGuard.Tests.csproj", "{0B4B444B-83E1-4573-BC42-E3ECB4F108B4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{920E365E-5C03-433B-AA67-C629758901E0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionsItems", "SolutionsItems", "{0990A9B7-4815-409B-9DB8-17D5AF508EB9}"
 	ProjectSection(SolutionItems) = preProject
-		LICENSE = LICENSE
 		README.md = README.md
-		saidout_icon32x32.png = saidout_icon32x32.png
 	EndProjectSection
 EndProject
 Global
@@ -22,22 +20,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9421435E-F537-4C91-9023-A4E11229A793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9421435E-F537-4C91-9023-A4E11229A793}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9421435E-F537-4C91-9023-A4E11229A793}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9421435E-F537-4C91-9023-A4E11229A793}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4366F679-B28E-45AC-BB05-6EDE3FF074B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4366F679-B28E-45AC-BB05-6EDE3FF074B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4366F679-B28E-45AC-BB05-6EDE3FF074B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4366F679-B28E-45AC-BB05-6EDE3FF074B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404D0115-53AA-48CD-8687-E4E3BEB2213E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404D0115-53AA-48CD-8687-E4E3BEB2213E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404D0115-53AA-48CD-8687-E4E3BEB2213E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404D0115-53AA-48CD-8687-E4E3BEB2213E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4B444B-83E1-4573-BC42-E3ECB4F108B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4B444B-83E1-4573-BC42-E3ECB4F108B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4B444B-83E1-4573-BC42-E3ECB4F108B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4B444B-83E1-4573-BC42-E3ECB4F108B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4366F679-B28E-45AC-BB05-6EDE3FF074B2} = {011C466C-D03A-41C7-B4E2-D236AF27B90D}
+		{404D0115-53AA-48CD-8687-E4E3BEB2213E} = {6399C426-ED74-4F76-B365-4B88F7F780EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5AF96BCF-7BA7-460A-8E27-ABC6EF621947}
+		SolutionGuid = {420D1816-5AE3-4550-AD76-BC463B74D476}
 	EndGlobalSection
 EndGlobal

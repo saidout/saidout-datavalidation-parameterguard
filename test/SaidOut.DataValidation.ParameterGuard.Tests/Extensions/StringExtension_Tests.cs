@@ -14,8 +14,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         [TestCase("paramB")]
         public void CheckIsNotNullOrBlank_ValueIsNull_ThrowsArgumentNullException(string paramName)
         {
-            var ex = Assert.Throws<ArgumentNullException>(() => ((string)null).CheckIsNotNullOrBlank(paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            var ex = Assert.Throws<ArgumentNullException>(() => ((string?)null).CheckIsNotNullOrBlank(paramName));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
         }
 
 
@@ -26,8 +26,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsNotNullOrBlank_ValueIsEmptyOrBlank_ThrowsArgumentException(string value, string paramName)
         {
             var ex = Assert.Throws<ArgumentException>(() => value.CheckIsNotNullOrBlank(paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain("can't be blank"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain("can't be blank"), nameof(ex.Message));
         }
 
 
@@ -48,8 +48,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         [TestCase("paramB")]
         public void CheckMatchRegexPattern_ValueIsNull_ThrowsArgumentNullException(string paramName)
         {
-            var ex = Assert.Throws<ArgumentNullException>(() => ((string)null).CheckMatchRegexPattern("^[a-z]*$", paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            var ex = Assert.Throws<ArgumentNullException>(() => ((string?)null).CheckMatchRegexPattern("^[a-z]*$", paramName));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
         }
 
 
@@ -59,8 +59,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckMatchRegexPattern_ValueDoesNotMatchRegexPattern_ThrowsArgumentException(string value, string regexPattern, string paramName, string valueInErrorMsg)
         {
             var ex = Assert.Throws<ArgumentException>(() => value.CheckMatchRegexPattern(regexPattern, paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain(regexPattern).And.Contain($"'{valueInErrorMsg}'"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain(regexPattern).And.Contain($"'{valueInErrorMsg}'"), nameof(ex.Message));
         }
 
 
@@ -68,7 +68,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         [TestCase("az", "^[a-z]{2,2}$")]
         public void CheckMatchRegexPattern_ValueMatchRegexPattern_ReturnParamValue(string value, string regexPattern)
         {
-            var actual = value.CheckMatchRegexPattern(value, DefaultParamName);
+            var actual = value.CheckMatchRegexPattern(regexPattern, DefaultParamName);
 
             Assert.That(actual, Is.EqualTo(value));
         }
@@ -80,8 +80,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         [TestCase("paramB")]
         public void CheckIsHexString_ValueIsNull_ThrowsArgumentNullException(string paramName)
         {
-            var ex = Assert.Throws<ArgumentNullException>(() => ((string)null).CheckIsHexString(paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            var ex = Assert.Throws<ArgumentNullException>(() => ((string?)null).CheckIsHexString(paramName));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
         }
 
 
@@ -95,8 +95,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsHexString_ValueIsNotHexString_ThrowsArgumentException(string value, string paramName, string valueInErrorMsg)
         {
             var ex = Assert.Throws<ArgumentException>(() => value.CheckIsHexString(paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain($"'{valueInErrorMsg}'"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain($"'{valueInErrorMsg}'"), nameof(ex.Message));
         }
 
 
@@ -110,8 +110,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsHexString_ByteIsLessThanMinByteSize_ThrowsArgumentException(string value, int minByteSize, string paramName, string valueInErrorMsg)
         {
             var ex = Assert.Throws<ArgumentException>(() => value.CheckIsHexString(paramName, minByteSize));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain(minByteSize.ToString()).And.Contain($"{valueInErrorMsg}").And.Not.Contain($"[{minByteSize}, {int.MaxValue}]"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain(minByteSize.ToString()).And.Contain($"{valueInErrorMsg}").And.Not.Contain($"[{minByteSize}, {int.MaxValue}]"), nameof(ex.Message));
         }
 
 
@@ -123,8 +123,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsHexString_ByteIsGreaterThanMaxByteSize_ThrowsArgumentException(string value, int maxByteSize, string paramName, string valueInErrorMsg)
         {
             var ex = Assert.Throws<ArgumentException>(() => value.CheckIsHexString(paramName, 0, maxByteSize));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain(maxByteSize.ToString()).And.Contain($"{valueInErrorMsg}").And.Not.Contain($"[{0}, {int.MaxValue}]"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain(maxByteSize.ToString()).And.Contain($"{valueInErrorMsg}").And.Not.Contain($"[{0}, {int.MaxValue}]"), nameof(ex.Message));
         }
 
 
@@ -138,8 +138,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsHexString_ByteIsOutsideAllowedRange_ThrowsArgumentException(string value, int minByteSize, int maxByteSize, string paramName, string valueInErrorMsg)
         {
             var ex = Assert.Throws<ArgumentException>(() => value.CheckIsHexString(paramName, minByteSize, maxByteSize));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain($"[{minByteSize}, {maxByteSize}]").And.Contain($"{valueInErrorMsg}"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain($"[{minByteSize}, {maxByteSize}]").And.Contain($"{valueInErrorMsg}"), nameof(ex.Message));
         }
 
 
@@ -167,7 +167,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsHexString_MinByteSizeIsLessThanZero_Throws(int minByteSize)
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() => "010203".CheckIsHexString(DefaultParamName, minByteSize));
-            Assert.That(ex.ParamName, Is.EqualTo("minByteSize"), nameof(ex.ParamName));
+            Assert.That(ex?.ParamName, Is.EqualTo("minByteSize"), nameof(ex.ParamName));
         }
         #endregion
     }

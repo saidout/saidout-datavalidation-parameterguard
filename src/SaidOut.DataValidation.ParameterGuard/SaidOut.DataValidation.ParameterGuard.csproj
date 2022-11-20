@@ -1,7 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net7.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
     <Authors>Said Outgajjouft</Authors>
     <Description>Parameter guard extensions for .NET that checks that a parameter meets the requirements and throws an ArgumentException if it doesn't.</Description>
     <Copyright>© 2017 Said Outgajjouft</Copyright>
@@ -11,13 +13,11 @@
     <RepositoryUrl>https://github.com/saidout/saidout-datavalidation-parameterguard</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>parameter guard;data validation</PackageTags>
-
-    <VersionPrefix>1.0.2</VersionPrefix>
-    <PackageReleaseNotes>Added support for netstandard2.1 and net48.</PackageReleaseNotes>
+    <VersionPrefix>2.0.1</VersionPrefix>
   </PropertyGroup>
-
+    
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.6;net48;net472;net471;net47;net462;net461;net46;net452;net451;net45</TargetFrameworks>
+    <TargetFrameworks>net7.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 

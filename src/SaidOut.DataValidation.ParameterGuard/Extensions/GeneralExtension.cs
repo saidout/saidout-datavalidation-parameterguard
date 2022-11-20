@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace SaidOut.DataValidation.ParameterGuard.Extensions
+﻿namespace SaidOut.DataValidation.ParameterGuard.Extensions
 {
 
     public static class GeneralExtension
@@ -14,10 +10,10 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <param name="paramName">The name of the parameter that should be checked, i.e. the parameter name of <paramref name="paramValue"/>.</param>
         /// <returns>Return <param name="paramValue"/></returns>
         /// <exception cref="ArgumentNullException">If <paramref name="paramValue"/> is <b>null</b>.</exception>
-        public static T CheckIsNotNull<T>(this T paramValue, string paramName)
+        public static T CheckIsNotNull<T>(this T? paramValue, string paramName)
             where T : class
         {
-            if (paramValue == null)
+            if (paramValue is null)
                 throw new ArgumentNullException(paramName);
 
             return paramValue;
@@ -31,7 +27,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         /// <returns>Return <param name="paramValue"/></returns>
         /// <exception cref="ArgumentException">If <paramref name="paramValue"/> contain a value not defined by the enum type <typeparamref name="TEnum"/>.</exception>
         public static TEnum CheckIsDefinedInEnum<TEnum>(this TEnum paramValue, string paramName)
-            where TEnum : struct, IComparable, IFormattable, IConvertible
+            where TEnum : Enum
         {
             var enumType = typeof(TEnum);
             if (!Enum.IsDefined(enumType, paramValue))
@@ -39,7 +35,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
                     paramName,
                     paramValue,
                     enumType.FullName,
-                    Enum.GetValues(enumType).OfType<TEnum>().ToDelimitatedString()), paramName);
+                    Enum.GetValues(enumType).OfType<TEnum>().ToDelimitedString()), paramName);
 
             return paramValue;
         }
@@ -55,7 +51,7 @@ namespace SaidOut.DataValidation.ParameterGuard.Extensions
         public static T CheckIsInWhitelist<T>(this T paramValue, ICollection<T> whitelist, string paramName)
         {
             if (!whitelist.Contains(paramValue))
-                throw new ArgumentException(string.Format(ExceptionMessages.ParamValueNotValid_ParamName_Value_ValidValues, paramName, paramValue?.ToString().TruncateParamValue(), whitelist.ToDelimitatedString()), paramName);
+                throw new ArgumentException(string.Format(ExceptionMessages.ParamValueNotValid_ParamName_Value_ValidValues, paramName, paramValue?.ToString()?.TruncateParamValue(), whitelist.ToDelimitedString()), paramName);
 
             return paramValue;
         }

@@ -14,8 +14,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests
         public void ThrowIfParamXIsLessThanParamY_ValueXIsGreaterThanValueY_ThrowsArgumentException(int valueX, int valueY, string nameX, string nameY)
         {
             var ex = Assert.Throws<ArgumentException>(() => GuardHelper.ThrowIfParamXIsLessThanParamY(valueX, nameX, valueY, nameY));
-            Assert.That(ex.ParamName, Is.EqualTo(nameX), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain("less than").And.Contain(nameX).And.Contain(nameY), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(nameX), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain("less than").And.Contain(nameX).And.Contain(nameY), nameof(ex.Message));
         }
 
 
@@ -40,8 +40,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests
         public void ThrowIfParamXIsEqualOrLessThanParamY_ValueXIsEqualOrGreaterThanValueY_ThrowsArgumentException(int valueX, int valueY, string nameX, string nameY)
         {
             var ex = Assert.Throws<ArgumentException>(() => GuardHelper.ThrowIfParamXIsEqualOrLessThanParamY(valueX, nameX, valueY, nameY));
-            Assert.That(ex.ParamName, Is.EqualTo(nameX), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain("equal or less than").And.Contain(nameX).And.Contain(nameY), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(nameX), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain("equal or less than").And.Contain(nameX).And.Contain(nameY), nameof(ex.Message));
         }
 
 
@@ -62,8 +62,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests
         public void ThrowIfParamXIsGreaterThanParamY_ValueXIsGreaterThanValueY_ThrowsArgumentException(int valueX, int valueY, string nameX, string nameY)
         {
             var ex = Assert.Throws<ArgumentException>(() =>  GuardHelper.ThrowIfParamXIsGreaterThanParamY(valueX, nameX, valueY, nameY));
-            Assert.That(ex.ParamName, Is.EqualTo(nameX), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain("greater than").And.Contain(nameX).And.Contain(nameY), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(nameX), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain("greater than").And.Contain(nameX).And.Contain(nameY), nameof(ex.Message));
         }
 
 
@@ -88,8 +88,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests
         public void ThrowIfParamXIsEqualOrGreaterThanParamY_ValueXIsEqualOrGreaterThanValueY_ThrowsArgumentException(int valueX, int valueY, string nameX, string nameY)
         {
             var ex = Assert.Throws<ArgumentException>(() => GuardHelper.ThrowIfParamXIsEqualOrGreaterThanParamY(valueX, nameX, valueY, nameY));
-            Assert.That(ex.ParamName, Is.EqualTo(nameX), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain("equal or greater than").And.Contain(nameX).And.Contain(nameY), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(nameX), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain("equal or greater than").And.Contain(nameX).And.Contain(nameY), nameof(ex.Message));
         }
 
 

@@ -23,8 +23,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         [TestCase("paramB")]
         public void CheckIsNotNull_ValueIsNull_ThrowsArgumentNullException(string paramName)
         {
-            var ex = Assert.Throws<ArgumentNullException>(() => ((object)null).CheckIsNotNull(paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            var ex = Assert.Throws<ArgumentNullException>(() => ((object?)null).CheckIsNotNull(paramName));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
         }
 
 
@@ -48,8 +48,8 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
             TestEnum enumValueNotDefined = (TestEnum)valueNotDefined;
 
             var ex = Assert.Throws<ArgumentException>(() => enumValueNotDefined.CheckIsDefinedInEnum(paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain($"{enumValueNotDefined}"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain($"{enumValueNotDefined}"), nameof(ex.Message));
         }
 
 
@@ -73,13 +73,13 @@ namespace SaidOut.DataValidation.ParameterGuard.Tests.Extensions
         public void CheckIsInWhitelist_WhitelistDoesNotContainValue_ThrowsArgumentException(string value, string paramName, string valueInErrorMsg, params string[] whitelist)
         {
             var ex = Assert.Throws<ArgumentException>(() => value.CheckIsInWhitelist(whitelist, paramName));
-            Assert.That(ex.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
-            Assert.That(ex.Message, Does.Contain($"'{valueInErrorMsg}'"), nameof(ex.Message));
+            Assert.That(ex?.ParamName, Is.EqualTo(paramName), nameof(ex.ParamName));
+            Assert.That(ex?.Message, Does.Contain($"'{valueInErrorMsg}'"), nameof(ex.Message));
 
         }
 
 
-        [TestCase(null, new string[] { null })]
+        [TestCase(null, new string?[] { null })]
         [TestCase(null, "a", null, "b")]
         [TestCase("b", "a", "b", "c")]
         [TestCase("c", "a", "b", "c")]

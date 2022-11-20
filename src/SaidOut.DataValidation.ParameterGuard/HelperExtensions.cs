@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace SaidOut.DataValidation.ParameterGuard
 {
@@ -13,13 +12,13 @@ namespace SaidOut.DataValidation.ParameterGuard
         public static string TruncateParamValue(this string input)
         {
             if (input.Length > TruncateMaxLength)
-                return input.Substring(0, TruncateMaxLength) + TruncateSymbol;
+                return input[..TruncateMaxLength] + TruncateSymbol;
 
             return input;
         }
 
 
-        public static string ToDelimitatedString<T>(this IEnumerable<T> values)
+        public static string ToDelimitedString<T>(this IEnumerable<T> values)
         {
             var sb = new StringBuilder();
             using (var enumerator = values.GetEnumerator())
