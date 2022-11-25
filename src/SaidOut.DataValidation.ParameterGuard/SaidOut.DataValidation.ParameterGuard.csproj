@@ -13,9 +13,9 @@
     <RepositoryUrl>https://github.com/saidout/saidout-datavalidation-parameterguard</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>parameter guard;data validation</PackageTags>
-    <VersionPrefix>2.0.1</VersionPrefix>
+    <VersionPrefix>2.0.2</VersionPrefix>
   </PropertyGroup>
-    
+
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TargetFrameworks>net7.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

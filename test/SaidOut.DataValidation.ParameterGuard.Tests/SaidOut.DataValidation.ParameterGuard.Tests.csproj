@@ -8,7 +8,6 @@
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TargetFrameworks>net7.0;net6.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

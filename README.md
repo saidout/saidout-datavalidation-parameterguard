@@ -2,6 +2,7 @@
 # SaidOut.DataValidation.ParameterGuard [![NuGet Version](https://img.shields.io/nuget/v/SaidOut.DataValidation.ParameterGuard.svg?style=flat)](https://www.nuget.org/packages/SaidOut.DataValidation.ParameterGuard/)
 Parameter guards for .NET that checks that a parameter meets the requirements and throws an `ArgumentException` if it doesn't.
 
+
 ---
 ## Table of Content
  * [Classes](#classes)
@@ -28,7 +29,7 @@ Example
     {
         public Person(int age, ...)  
         {  
-            Age = age.CheckIsEqualOrGreaterThan(0, nameof(age));  
+            Age = age.CheckIsEqualOrGreaterThan(0);  
             ...  
         }  
   
@@ -49,7 +50,7 @@ Example
 ```cs
     public void MethodA(IEnumerable<string> data)  
     {  
-        data.CheckIsNotNullOrEmpty(nameof(data));  
+        data.CheckIsNotNullOrEmpty();  
         ...  
     }  
 ```
@@ -70,7 +71,7 @@ Example
 ```cs
     public void MethodA(int guess, int age)  
     {  
-        guess.CheckIsInsideRange(0, 100, nameof(guess));  
+        guess.CheckIsInsideRange(0, 100);  
         age.CheckIsEqualOrGreaterThan(0);
         ...  
     }  
@@ -91,9 +92,9 @@ Example
 ```cs
     public Ctor(CustomData data, TestEnum val, string input)  
     {  
-        _data = data.CheckIsNotNull(nameof(data));  
-        _val = val.CheckIsDefinedInEnum(nameof(val));  
-        _input = input.CheckIsInWhitelist(/* whitelist = */ new[] { "ab", "ef", "hf" }, nameof(input));  
+        _data = data.CheckIsNotNull();  
+        _val = val.CheckIsDefinedInEnum();  
+        _input = input.CheckIsInWhitelist(/* whitelist = */ new[] { "ab", "ef", "hf" });  
         ...  
     }  
 ```
@@ -113,12 +114,12 @@ Example
 ```cs
     public void MethodA(string nonBlankInput, string hexValA, string hexValB, string hexValC)  
     {  
-        nonBlankInput.CheckIsNotNullOrBlank(nameof(nonBlankInput));  
-        hexValA.CheckMatchRegexPattern(nameof(hexValA));  
+        nonBlankInput.CheckIsNotNullOrBlank();  
+        hexValA.CheckMatchRegexPattern();  
         // The hex string byte size representation of hexValB should be 10 or greater  
-        hexValB.CheckIsHexString(nameof(hexValB), 10);  
+        hexValB.CheckIsHexString(10);  
         // The hex string byte size representation of hexValC should be in the range [5, 15]  
-        hexValC.CheckIsHexString(nameof(hexValC), 5, 15);  
+        hexValC.CheckIsHexString(5, 15);  
         ...  
     }  
 ```
@@ -139,7 +140,7 @@ Example
 ```cs
     public void MethodA(int minValue, int maxValue)  
     {  
-        GuardHelper.ThrowIfParamXIsGreaterThanParamY(minValue, nameof(minValue), maxValue, nameof(maxValue))
+        GuardHelper.ThrowIfParamXIsGreaterThanParamY(minValue, maxValue)
         ...  
     }  
 ```
